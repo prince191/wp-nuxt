@@ -1,20 +1,47 @@
+const siteUrl = "vuonghongvinh.site"
+const baseUrl = "https://vuonghongvinh.site/"
+const fullUrl = "https://admin.gaucoffee.com/"
+
 export default {
   ssr: true,
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    title: 'wp-nuxt',
     htmlAttrs: {
-      lang: 'en'
+      lang: 'vi_VN'
     },
     meta: [
       { charset: 'utf-8' },
-      { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: '' },
-      { name: 'format-detection', content: 'telephone=no' }
+      { name: 'viewport', content: 'width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui, web9_user-scalable=0' },
+      { name: 'Language', content: "vi" },
+      { name: 'revisit-after', content: "1 days" },
+      { property: 'og:locale', content: 'vi_VN' },
+      { name: 'Copyright', content: 'copyright © 2024 by ' + siteUrl },
+      { name: 'author', content: siteUrl },
+      { name: 'Generator', content: siteUrl },
+      //{ name: 'google-site-verification', content: 'QU07G4foyisFlGIcgB46lNbnzl06goC_Q6WkZBC79yY' },
     ],
     link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
-    ]
+      { rel: 'alternate', media: 'handheld', href: baseUrl },
+      { rel: 'shortcut icon', href: baseUrl + 'favicon.ico' }
+    ],
+    //__dangerouslyDisableSanitizers: ['script'],
+    //script: [
+    //  {
+    //    src: "https://www.googletagmanager.com/gtag/js?id=G-3TRH3KSGZE",
+    //    async: true
+    //  },
+    //  {
+    //    innerHTML: `
+    //       window.dataLayer = window.dataLayer || [];
+    //        function gtag(){dataLayer.push(arguments);}
+    //        gtag('js', new Date());
+
+    //        gtag('config', 'G-3TRH3KSGZE');
+    //    `,
+    //    type: 'text/javascript',
+    //    charset: 'utf-8'
+    //  }
+    //]
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
@@ -39,10 +66,7 @@ export default {
   build: {
   },
   env: {
-    baseUrl: 'https://admin.gaucoffee.com/graphql'
-  },
-  serverMiddleware: [
-    // Thêm plugin fetch vào serverMiddleware
-    '~/serverMiddleware/fetch.js',
-  ],
+    baseUrl: baseUrl,
+    graphUrl: fullUrl + 'graphql',
+  }
 }

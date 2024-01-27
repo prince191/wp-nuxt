@@ -3,10 +3,10 @@
     <div class="container">
       <div class="relative flex items-center justify-between -mx-4">
         <div class="max-w-full px-4 w-60">
-          <a href="index.html" class="block w-full py-5 navbar-logo">
+          <NuxtLink to="/" class="block w-full py-5 navbar-logo">
             <img src="/images/logo/logo.svg" alt="logo" class="w-full dark:hidden" />
             <img src="/images/logo/logo-white.svg" alt="logo" class="hidden w-full dark:block" />
-          </a>
+          </NuxtLink>
         </div>
         <div class="flex items-center justify-between w-full px-4">
           <div>
@@ -20,16 +20,16 @@
                  class="absolute right-4 top-full hidden w-full max-w-[250px] rounded-lg bg-white dark:bg-dark-2 py-5 shadow-lg lg:static lg:block lg:w-full lg:max-w-full lg:bg-transparent dark:lg:bg-transparent lg:py-0 lg:px-4 lg:shadow-none xl:px-6">
               <ul class="blcok lg:flex 2xl:ml-20">
                 <li class="relative group">
-                  <a href="/"
-                     class="flex py-2 mx-8 text-base font-medium ud-menu-scroll text-dark dark:text-white group-hover:text-primary lg:mr-0 lg:inline-flex lg:py-6 lg:px-0 lg:text-body-color dark:lg:text-dark-6">
+                  <NuxtLink to="/"
+                            class="flex py-2 mx-8 text-base font-medium ud-menu-scroll text-dark dark:text-white group-hover:text-primary lg:mr-0 lg:inline-flex lg:py-6 lg:px-0 lg:text-body-color dark:lg:text-dark-6">
                     Home
-                  </a>
+                  </NuxtLink>
                 </li>
                 <li class="relative group" v-for="item in categorys" :key="item.slug">
-                  <a :href="item.slug"
-                     class="flex py-2 mx-8 text-base font-medium ud-menu-scroll text-dark dark:text-white group-hover:text-primary lg:mr-0 lg:ml-7 lg:inline-flex lg:py-6 lg:px-0 lg:text-body-color dark:lg:text-dark-6 xl:ml-10">
+                  <NuxtLink :to="'/' + item.slug"
+                            class="flex py-2 mx-8 text-base font-medium ud-menu-scroll text-dark dark:text-white group-hover:text-primary lg:mr-0 lg:ml-7 lg:inline-flex lg:py-6 lg:px-0 lg:text-body-color dark:lg:text-dark-6 xl:ml-10">
                     {{item.name}}
-                  </a>
+                  </NuxtLink>
                 </li>
                 
                 <!--<li class="relative submenu-item group">
@@ -115,31 +115,10 @@
   </div>
 </template>
 <script>
-  import { categorysQuery } from '../constants/query.js';
-  
-
   export default {
     name: "Header",
-    async asyncData() {
-      try {
-        const baseUrl = process.env.baseUrl;
-        const apolloClient = new ApolloClient({
-          uri: baseUrl,
-          fetch
-        });
-        const response = await apolloClient.query({
-          query: categorysQuery,
-          fetchPolicy: 'no-cache',
-        });
-
-        const categorys = response.data?.categories?.nodes;
-        return {
-          categorys: categorys
-        };
-      } catch (error) {
-        console.error('Error fetching data:', error);
-        return { categorys: [] };
-      }
+    props: {
+      categorys: Array,
     },
     watchQuery(val) {
       return val;

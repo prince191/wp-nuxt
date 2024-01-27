@@ -1,48 +1,33 @@
 <template>
   <div class="bg-white font-family-karla">
+    <Header :categorys="categorys"/>
     <section class="pb-10 pt-20 dark:bg-dark lg:pb-20 lg:pt-[120px]">
       <div class="container">
         <div class="container mx-auto flex flex-wrap py-6">
           <!-- Posts Section -->
           <section class="w-full md:w-2/3 flex flex-col items-center px-3">
 
-            <article class="flex flex-col shadow my-4" v-for="i in  [1,2,3,4,5,6,7,8,9]" :key="i">
+            <div class="flex flex-col shadow my-4" v-for="item in cateItems" :key="item.slug" v-show="item.posts.nodes[0]">
               <!-- Article Image -->
-              <a href="/bai-viet" class="hover:opacity-75">
-                <img src="https://source.unsplash.com/collection/1346951/1000x500?sig=1">
-              </a>
+              <NuxtLink :to="item.slug" class="hover:opacity-75" v-show="item.posts.nodes[0]?.featuredImage?.node?.sourceUrl">
+                <img format="webp" :src="item.posts.nodes[0]?.featuredImage?.node?.sourceUrl" quality="20" class="h-[400px] w-full" alt="item.posts.nodes[0]?.featuredImage?.node?.altText"/>
+              </NuxtLink>
               <div class="bg-white flex flex-col justify-start p-6">
-                <a href="category" class="text-blue-700 text-sm font-bold uppercase pb-4">Technology</a>
-                <a href="/bai-viet" class="text-3xl font-bold hover:text-gray-700 pb-4">Lorem Ipsum Dolor Sit Amet Dolor Sit Amet</a>
-                <p href="/bai-viet" class="text-sm pb-3">
-                  By <a href="#" class="font-semibold hover:text-gray-800">David Grzyb</a>, Published on April 25th, 2020
+                <NuxtLink :to="item.slug" class="text-blue-700 text-sm font-bold uppercase pb-4">{{item.name}}</NuxtLink>
+                <NuxtLink :to="item.slug + '/' + item.posts.nodes[0]?.slug" v-show="item.posts.nodes[0]" class="text-3xl font-bold hover:text-gray-700 pb-4">{{item.posts.nodes[0]?.title}}</NuxtLink>
+                <p v-show="item.posts.nodes[0]" class="text-sm pb-3">
+                  By <a class="font-semibold hover:text-gray-800">{{item.posts.nodes[0]?.author?.node?.name}}</a>, Published on {{convertDate(item.posts.nodes[0]?.date)}}
                 </p>
-                <a href="/bai-viet" class="pb-6">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus quis porta dui. Ut eu iaculis massa. Sed ornare ligula lacus, quis iaculis dui porta volutpat. In sit amet posuere magna..</a>
-                <a href="/bai-viet" class="uppercase text-gray-800 hover:text-black inline-flex items-center space-x-4">
+                <NuxtLink :to="item.slug + '/' + item.posts.nodes[0]?.slug" v-show="item.posts.nodes[0]" class="pb-6" v-html="item.posts.nodes[0]?.excerpt"></NuxtLink>
+                <NuxtLink :to="item.slug + '/' + item.posts.nodes[0]?.slug" v-show="item.posts.nodes[0]" class="uppercase text-gray-800 hover:text-black inline-flex items-center space-x-4">
                   Continue Reading
-
                   <span class="ml-2 inline-block">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="h-4 w-4" viewBox="0 0 16 16">
                       <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8" />
                     </svg>
                   </span>
-                </a>
+                </NuxtLink>
               </div>
-            </article>
-
-
-            <!-- Pagination -->
-            <div class="flex items-center py-8">
-              <a href="#" class="h-10 w-10 bg-blue-800 hover:bg-blue-600 font-semibold text-white text-sm flex items-center justify-center">1</a>
-              <a href="#" class="h-10 w-10 font-semibold text-gray-800 hover:bg-blue-600 hover:text-white text-sm flex items-center justify-center">2</a>
-              <a href="#" class="h-10 w-10 font-semibold text-gray-800 hover:text-gray-900 text-base flex items-center justify-center ml-3">
-                Next
-                <span class="ml-2 inline-block">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="h-4 w-4" viewBox="0 0 16 16">
-                    <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8" />
-                  </svg>
-                </span>
-              </a>
             </div>
 
           </section>
@@ -52,27 +37,27 @@
 
             <div class="w-full bg-white shadow flex flex-col my-4 p-6">
               <p class="text-xl font-semibold pb-5">About Us</p>
-              <p class="pb-2">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas mattis est eu odio sagittis tristique. Vestibulum ut finibus leo. In hac habitasse platea dictumst.</p>
-              <a href="#" class="w-full bg-blue-800 text-white font-bold text-sm uppercase rounded hover:bg-blue-700 flex items-center justify-center px-2 py-3 mt-4">
+              <p class="pb-2">{{seo?.meta?.homepage?.description}}</p>
+              <!--<a href="#" class="w-full bg-blue-800 text-white font-bold text-sm uppercase rounded hover:bg-blue-700 flex items-center justify-center px-2 py-3 mt-4">
                 Get to know us
-              </a>
+              </a>-->
             </div>
 
             <div class="w-full bg-white shadow flex flex-col my-4 p-6">
               <p class="text-xl font-semibold pb-5">Instagram</p>
               <div class="grid grid-cols-3 gap-3">
-                <img class="hover:opacity-75" src="https://source.unsplash.com/collection/1346951/150x150?sig=1">
-                <img class="hover:opacity-75" src="https://source.unsplash.com/collection/1346951/150x150?sig=2">
-                <img class="hover:opacity-75" src="https://source.unsplash.com/collection/1346951/150x150?sig=3">
-                <img class="hover:opacity-75" src="https://source.unsplash.com/collection/1346951/150x150?sig=4">
-                <img class="hover:opacity-75" src="https://source.unsplash.com/collection/1346951/150x150?sig=5">
-                <img class="hover:opacity-75" src="https://source.unsplash.com/collection/1346951/150x150?sig=6">
-                <img class="hover:opacity-75" src="https://source.unsplash.com/collection/1346951/150x150?sig=7">
-                <img class="hover:opacity-75" src="https://source.unsplash.com/collection/1346951/150x150?sig=8">
-                <img class="hover:opacity-75" src="https://source.unsplash.com/collection/1346951/150x150?sig=9">
+                <img format="webp" quality="20" class="hover:opacity-75" src="https://source.unsplash.com/collection/1346951/150x150?sig=1"/>
+                <img format="webp" quality="20" class="hover:opacity-75" src="https://source.unsplash.com/collection/1346951/150x150?sig=2"/>
+                <img format="webp" quality="20" class="hover:opacity-75" src="https://source.unsplash.com/collection/1346951/150x150?sig=3"/>
+                <img format="webp" quality="20" class="hover:opacity-75" src="https://source.unsplash.com/collection/1346951/150x150?sig=4"/>
+                <img format="webp" quality="20" class="hover:opacity-75" src="https://source.unsplash.com/collection/1346951/150x150?sig=5"/>
+                <img format="webp" quality="20" class="hover:opacity-75" src="https://source.unsplash.com/collection/1346951/150x150?sig=6"/>
+                <img format="webp" quality="20" class="hover:opacity-75" src="https://source.unsplash.com/collection/1346951/150x150?sig=7"/>
+                <img format="webp" quality="20" class="hover:opacity-75" src="https://source.unsplash.com/collection/1346951/150x150?sig=8"/>
+                <img format="webp" quality="20" class="hover:opacity-75" src="https://source.unsplash.com/collection/1346951/150x150?sig=9"/>
               </div>
               <a href="#" class="w-full bg-blue-800 text-white font-bold text-sm uppercase rounded hover:bg-blue-700 flex items-center justify-center px-2 py-3 mt-6">
-                <i class="fab fa-instagram mr-2"></i> Follow @dgrzyb
+                <i class="fab fa-instagram mr-2"></i> Follow me
               </a>
             </div>
 
@@ -81,86 +66,75 @@
         </div>
       </div>
     </section>
+    <Footer :footerHtml="footerHtml"/>
   </div>
 </template>
 
 <script>
-  import ApolloClient from 'apollo-boost';
-  import gql from 'graphql-tag';
+  import Header from "../components/header.vue"
+  import Footer from "../components/footer.vue"
+  import { ApolloClient, categorysAndFirstPostQuery } from '../constants/query.js';
 
+  const graphUrl = process.env.graphUrl;
   const apolloClient = new ApolloClient({
-    uri: 'https://admin.gaucoffee.com/graphql',
+    uri: graphUrl,
     fetch
   });
-  const postsQuery = gql`
-  fragment pageInfoData on WPPageInfo {
-    endCursor
-    hasNextPage
-    hasPreviousPage
-    startCursor
-  }
-  fragment listPostData on Post {
-    id
-    slug
-    title
-    content
-    excerpt
-    uri
-    status
-  }
-  query GetPosts(
-    $where: RootQueryToPostConnectionWhereArgs
-    $after: String
-    $before: String
-    $first: Int
-    $last: Int
-  ) {
-    posts(
-      where: $where
-      after: $after
-      before: $before
-      first: $first
-      last: $last
-    ) {
-      pageInfo {
-        ...pageInfoData
-      }
-      nodes {
-        ...listPostData
-      }
-    }
-  }
-
-
-
-
-`
+  
 
   export default {
-    layout: 'default',
-    async asyncData() {
+    //layout: 'default',
+    components: {
+      Header,
+      Footer
+    },
+    head() {
+      return {
+        title: this.seo?.meta?.homepage?.title ? this.seo?.meta?.homepage?.title : "My Blog",
+        meta: [
+          {
+            property: "og:url", content: process.env.baseUrl,
+          },
+          {
+            name: 'robots', content: "index,follow" 
+          },
+          { name: "title", content: this.seo?.meta?.homepage?.title ? this.seo?.meta?.homepage?.title : "My Blog" },
+          { name: "description", content: this.seo?.meta?.homepage?.description ? this.seo?.meta?.homepage?.description : ""},
+          { property: "og:title", content: this.seo?.meta?.openGraph?.frontPage?.title ? this.seo?.meta?.openGraph?.frontPage?.title : ""},
+          { property: "og:description", content: this.seo?.meta?.openGraph?.frontPage?.description ? this.seo?.meta?.openGraph?.frontPage?.description : "" },
+          { property: 'og:site_name', content: this.seo?.schema?.siteName ? this.seo?.schema?.siteName : "" },
+        ],
+        link: [
+          {
+            rel: "canonical",
+            href: process.env.baseUrl,
+          },
+        ],
+      };
+    },
+    async asyncData(context) {
+      let categorys = context.store.state.categorys;
+      let footerHtml = context.store.state.footerHtml;
       try {
         const response = await apolloClient.query({
-          query: gql`query {
-                      posts {
-                        nodes {
-                          title
-                          content
-                          excerpt
-                        }
-                      }
-                    }`,
+          query: categorysAndFirstPostQuery,
           fetchPolicy: 'no-cache',
         });
 
-        const posts = response.data.posts.nodes;
-        console.log("Vẫn vào đây")
+        const cateItems = response.data?.categories?.nodes.map(function (e) {
+          e.post = e.posts?.nodes[0]
+          return e
+        });
+        const seo = response.data?.seo
         return {
-          posts: posts
+          cateItems: cateItems,
+          categorys: categorys,
+          seo: seo,
+          footerHtml: footerHtml
         };
       } catch (error) {
         console.error('Error fetching data:', error);
-        return { posts: [] };
+        context.redirect("/404");
       }
     },
     async created() {
@@ -168,27 +142,20 @@
     },
     data() {
       return {
-        currentIndex: 0,
-        images: [
-          'https://source.unsplash.com/collection/1346951/800x800?sig=1',
-          'https://source.unsplash.com/collection/1346951/800x800?sig=2',
-          'https://source.unsplash.com/collection/1346951/800x800?sig=3',
-          'https://source.unsplash.com/collection/1346951/800x800?sig=4',
-          'https://source.unsplash.com/collection/1346951/800x800?sig=5',
-          'https://source.unsplash.com/collection/1346951/800x800?sig=6',
-          'https://source.unsplash.com/collection/1346951/800x800?sig=7',
-          'https://source.unsplash.com/collection/1346951/800x800?sig=8',
-          'https://source.unsplash.com/collection/1346951/800x800?sig=9',
-        ],
-        open: false
+        
       }
     },
     methods: {
-      increment() {
-        this.currentIndex = this.currentIndex === this.images.length - 6 ? 0 : this.currentIndex + 1;
-      },
-      decrement() {
-        this.currentIndex = this.currentIndex === this.images.length - 6 ? 0 : this.currentIndex - 1;
+      convertDate(date) {
+        if (!date) return ""
+        var d = new Date(date); // Epoch
+        return (
+          [
+            d.getDate().toString().padStart(2, 0),
+            (d.getMonth() + 1).toString().padStart(2, 0),
+            d.getFullYear(),
+          ].join("/") 
+        );
       },
     }
   };
