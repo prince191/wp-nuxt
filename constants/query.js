@@ -12,6 +12,16 @@ const categorysQuery = gql`
   }
 }
 `
+const categorysQuery_no_footer = gql`
+  query {
+  categories {
+    nodes {
+      name
+      slug
+    }
+  }
+}
+`
 
 const categorysAndFirstPostQuery = gql`
   query {
@@ -214,6 +224,83 @@ fragment PostFields on Post {
 `
 
 
+const GET_DETAIL_POST_NO_CATE = gql`
+ query GetPosts($slug: String, $first: Int,  $firstNotCate: Int) {
+  singlePost: postBy(slug: $slug) {
+    id
+    title
+    date
+    content
+    author {
+      node {
+        avatar {
+          url
+        }
+        name
+      }
+    }
+    seo {
+      fullHead
+      metaDesc
+      metaRobotsNofollow
+      metaRobotsNoindex
+      opengraphDescription
+      opengraphTitle
+      opengraphType
+      opengraphUrl
+      title
+      opengraphSiteName
+    }
+  }
+
+  postsWithCategory: posts(
+    where: { orderby: { field: DATE, order: DESC }}
+    first: $first
+  ) {
+    nodes {
+      ...PostFields
+    }
+  }
+
+  postsWithoutCategory: posts(
+    where: { orderby: { field: DATE, order: DESC }}
+    first: $firstNotCate
+  ) {
+    nodes {
+      ...PostFields
+      categories {
+        nodes {
+          slug
+        }
+      }
+    }
+  }
+}
+
+fragment PostFields on Post {
+  id
+  title
+  date
+  excerpt
+  slug
+  author {
+    node {
+      avatar {
+        url
+      }
+      name
+    }
+  }
+  featuredImage {
+    node {
+      sourceUrl
+      altText
+    }
+  }
+}
+`
+
+
 export {
-  ApolloClient, categorysQuery, categorysAndFirstPostQuery, GET_PAGINATED_POSTS_BY_CATEGORY, GET_DETAIL_POST
+  ApolloClient, categorysQuery, categorysQuery_no_footer, categorysAndFirstPostQuery, GET_PAGINATED_POSTS_BY_CATEGORY, GET_DETAIL_POST, GET_DETAIL_POST_NO_CATE
 }

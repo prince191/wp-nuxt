@@ -17,10 +17,10 @@
       // === logo change
       if (ud_header.classList.contains("sticky")) {
         document.querySelector(".header-logo").src =
-          "assets/images/logo/logo.svg"
+          "https://gaucoffee.pages.dev/logo/logo.svg"
       } else {
         document.querySelector(".header-logo").src =
-          "assets/images/logo/logo-white.svg"
+          "https://gaucoffee.pages.dev/logo/logo-white.svg"
       }
     }
 
@@ -29,21 +29,24 @@
         // === logo change
         if (ud_header.classList.contains("sticky")) {
           document.querySelector(".header-logo").src =
-            "assets/images/logo/logo-white.svg"
+            "https://gaucoffee.pages.dev/logo/logo-white.svg"
         }
       }
     }
 
     // show or hide the back-top-top button
-    const backToTop = document.querySelector(".back-to-top");
-    if (
-      document.body.scrollTop > 50 ||
-      document.documentElement.scrollTop > 50
-    ) {
-      backToTop.style.display = "flex";
-    } else {
-      backToTop.style.display = "none";
+    if (document.querySelector(".back-to-top")) {
+      const backToTop = document.querySelector(".back-to-top");
+      if (
+        document.body.scrollTop > 50 ||
+        document.documentElement.scrollTop > 50
+      ) {
+        backToTop.style.display = "flex";
+      } else {
+        backToTop.style.display = "none";
+      }
     }
+    
   };
 
   // ===== responsive navbar

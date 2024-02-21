@@ -1,5 +1,5 @@
 import ApolloClient from 'apollo-boost';
-import { categorysQuery } from '../constants/query.js';
+import { categorysQuery, categorysQuery_no_footer } from '../constants/query.js';
 
 
 export const state = () => ({
@@ -25,17 +25,26 @@ export const actions = {
         uri: graphUrl,
         fetch
       });
-      const response = await apolloClient.query({
-        query: categorysQuery,
-        fetchPolicy: 'no-cache',
-      });
+      var response;
+      var footerHtml = "";
+      try {
+        response = await apolloClient.query({
+          query: categorysQuery,
+          fetchPolicy: 'no-cache',
+        });
+        footerHtml = response.data?.getCustomHtml;
+      } catch (e) {
+        response = await apolloClient.query({
+          query: categorysQuery_no_footer,
+          fetchPolicy: 'no-cache',
+        });
+      }
+      var categorys = response.data?.categories?.nodes;
 
-      const categorys = response.data?.categories?.nodes;
-      const footerHtml = response.data?.getCustomHtml;
       commit("setCategory", categorys);
       commit("setFooterHtml", footerHtml);
     } catch (error) {
-      console.error('Error fetching data:', error);
+      //console.error('Error fetching data:', error);
     }
     
   }

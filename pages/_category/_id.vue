@@ -140,7 +140,7 @@
                   </div>
 
                   <div class="fadeInUp mb-12 overflow-hidden rounded-[5px]">
-                    <img src="/images/blog/bannder-ad.png"
+                    <img src="https://gaucoffee.pages.dev/blog/bannder-ad.png"
                          alt="image"
                          class="w-full" />
                   </div>
@@ -161,7 +161,7 @@
             <div class="mb-10 fadeInUp group">
               <div class="mb-8 overflow-hidden rounded-[5px]">
                 <NuxtLink :to="item.slug" class="block">
-                  <img format="webp" :src="item.featuredImage?.node?.sourceUrl ? item.featuredImage?.node?.sourceUrl : '/images/no-thumb.webp'"
+                  <img format="webp" :src="item.featuredImage?.node?.sourceUrl ? item.featuredImage?.node?.sourceUrl : 'https://gaucoffee.pages.dev/no-thumb.webp'"
                        :alt="item.featuredImage?.node?.altText"
                        class="w-full h-[250px] transition group-hover:rotate-6 group-hover:scale-125" />
                 </NuxtLink>

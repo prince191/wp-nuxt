@@ -8,7 +8,7 @@
         <div class="flex flex-wrap items-center -mx-4">
           <div class="w-full px-4 md:w-5/12 lg:w-6/12">
             <div class="text-center">
-              <img src="images/404.svg"
+              <img src="https://gaucoffee.pages.dev/404.svg"
                    alt="image"
                    class="max-w-full mx-auto" />
             </div>
