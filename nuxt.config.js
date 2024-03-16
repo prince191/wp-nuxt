@@ -3,8 +3,6 @@ const baseUrl = "https://gaucoffee.com/"
 const fullUrl = "https://admin.gaucoffee.com/"
 
 export default {
-  target: 'static', // default is 'server'
-  ssr: true,
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
     htmlAttrs: {
@@ -65,16 +63,6 @@ export default {
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
-    publicPath: "https://gaucoffee.pages.dev/",
-    collapseBooleanAttributes: true,
-    decodeEntities: true,
-    minifyCSS: true,
-    minifyJS: true,
-    processConditionalComments: true,
-    removeEmptyAttributes: true,
-    removeRedundantAttributes: true,
-    trimCustomFragments: true,
-    useShortDoctype: true
   },
   env: {
     baseUrl: baseUrl,

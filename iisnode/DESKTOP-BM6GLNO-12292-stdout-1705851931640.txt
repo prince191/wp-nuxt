@@ -1,1 +1,0 @@
-Server listening on `localhost:\\.\pipe\29f2844d-4c50-476e-8048-096e8447e91d`.
