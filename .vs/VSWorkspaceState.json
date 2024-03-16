@@ -2,15 +2,14 @@
   "ExpandedNodes": [
     "",
     "\\components",
-    "\\constants",
     "\\layouts",
     "\\pages",
     "\\pages\\_category",
     "\\plugins",
+    "\\server",
     "\\static",
     "\\static\\images",
     "\\store"
   ],
-  "SelectedNode": "\\pages\\_id.vue",
   "PreviewInSolutionExplorer": false
 }
