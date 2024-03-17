@@ -60,10 +60,22 @@ export default {
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
     '@nuxt/image',
+    '@kimyvgy/nuxt-page-cache',
   ],
   image: {
     quality: 50,
     format: ['webp']
+  },
+  cache: {
+    enabled: process.env.NODE_ENV === 'production',
+    cacheStatusHeader: 'x-cache-status',
+    version: "1.0.0",
+    useHostPrefix: false,
+    store: {
+      type: 'memory',
+      max: 100,
+      ttl: 60,
+    },
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
