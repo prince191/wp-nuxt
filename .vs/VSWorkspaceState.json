@@ -2,14 +2,15 @@
   "ExpandedNodes": [
     "",
     "\\components",
+    "\\constants",
     "\\layouts",
     "\\pages",
     "\\pages\\_category",
     "\\plugins",
-    "\\server",
-    "\\static",
+    "\\serverMiddleware",
     "\\static\\images",
     "\\store"
   ],
+  "SelectedNode": "\\pages\\index.vue",
   "PreviewInSolutionExplorer": false
 }

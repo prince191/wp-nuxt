@@ -59,7 +59,12 @@ export default {
 
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
+    '@nuxt/image',
   ],
+  image: {
+    quality: 50,
+    format: ['webp']
+  },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {

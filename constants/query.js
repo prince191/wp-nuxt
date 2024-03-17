@@ -53,6 +53,10 @@ const categorysAndFirstPostQuery = gql`
       }
     }
   }
+}
+`
+const seoQuery = gql`
+  query {
   seo {
     meta {
       homepage {
@@ -302,5 +306,5 @@ fragment PostFields on Post {
 
 
 export {
-  ApolloClient, categorysQuery, categorysQuery_no_footer, categorysAndFirstPostQuery, GET_PAGINATED_POSTS_BY_CATEGORY, GET_DETAIL_POST, GET_DETAIL_POST_NO_CATE
+  ApolloClient, categorysQuery, categorysQuery_no_footer, categorysAndFirstPostQuery, GET_PAGINATED_POSTS_BY_CATEGORY, GET_DETAIL_POST, GET_DETAIL_POST_NO_CATE, seoQuery
 }
