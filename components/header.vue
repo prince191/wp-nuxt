@@ -4,8 +4,8 @@
       <div class="relative flex items-center justify-between -mx-4">
         <div class="max-w-full px-4 w-60">
           <NuxtLink to="/" class="block w-full py-5 navbar-logo">
-            <img src="/images/logo/logo.svg" alt="logo" class="w-full dark:hidden" />
-            <img src="/images/logo/logo-white.svg" alt="logo" class="hidden w-full dark:block" />
+            <nuxt-img sizes="100vw sm:50vw md:400px" preload fit="cover" src="/images/logo/logo.svg" alt="logo" class="w-full dark:hidden" />
+            <nuxt-img sizes="100vw sm:50vw md:400px" preload fit="cover" src="/images/logo/logo-white.svg" alt="logo" class="hidden w-full dark:block" />
           </NuxtLink>
         </div>
         <div class="flex items-center justify-between w-full px-4">

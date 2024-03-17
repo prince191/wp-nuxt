@@ -126,10 +126,10 @@
           return e
         });
 
-        //const resSeo = await apolloClient.query({
-        //  query: seoQuery
-        //});
-        const seo = response.data?.seo
+        const resSeo = await apolloClient.query({
+          query: seoQuery
+        });
+        const seo = resSeo.data?.seo
         return {
           cateItems: cateItems,
           categorys: categorys,

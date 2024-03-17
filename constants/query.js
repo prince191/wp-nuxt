@@ -53,26 +53,6 @@ const categorysAndFirstPostQuery = gql`
       }
     }
   }
-  seo {
-    meta {
-      homepage {
-        description
-        title
-      }
-    }
-    openGraph {
-      frontPage {
-        description
-        title
-      }
-    }
-    webmaster {
-      googleVerify
-    }
-    schema {
-      siteName
-    }
-  }
 }
 `
 const seoQuery = gql`
