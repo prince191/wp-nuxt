@@ -7,7 +7,7 @@
           <!-- Posts Section -->
           <section class="w-full md:w-2/3 flex flex-col items-center px-3">
 
-            <div class="flex flex-col shadow my-4" v-for="item in cateItems" :key="item.slug" v-show="item.posts.nodes[0]">
+            <div class="flex flex-col shadow my-4" v-for="item in cateItems" :key="item.slug" v-show="item.posts.nodes[0]" style="min-width: -webkit-fill-available;">
               <!-- Article Image -->
               <NuxtLink :to="item.slug" class="hover:opacity-75" v-if="item.posts.nodes[0]?.featuredImage?.node?.sourceUrl">
                 <nuxt-img preload :src="item.posts.nodes[0]?.featuredImage?.node?.sourceUrl" quality="20" class="h-[400px] w-full" alt="item.posts.nodes[0]?.featuredImage?.node?.altText"/>
