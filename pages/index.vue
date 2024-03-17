@@ -10,7 +10,7 @@
             <div class="flex flex-col shadow my-4" v-for="item in cateItems" :key="item.slug" v-show="item.posts.nodes[0]" style="min-width: -webkit-fill-available;">
               <!-- Article Image -->
               <NuxtLink :to="item.slug" class="hover:opacity-75" v-if="item.posts.nodes[0]?.featuredImage?.node?.sourceUrl">
-                <nuxt-img preload :src="item.posts.nodes[0]?.featuredImage?.node?.sourceUrl" quality="20" class="h-[400px] w-full" alt="item.posts.nodes[0]?.featuredImage?.node?.altText"/>
+                <nuxt-img preload fit="cover" format="webp" :src="item.posts.nodes[0]?.featuredImage?.node?.sourceUrl" quality="20" class="h-[400px] w-full" alt="item.posts.nodes[0]?.featuredImage?.node?.altText"/>
               </NuxtLink>
               <div class="bg-white flex flex-col justify-start p-6">
                 <NuxtLink :to="item.slug" class="text-blue-700 text-sm font-bold uppercase pb-4">{{item.name}}</NuxtLink>
@@ -46,15 +46,15 @@
             <div class="w-full bg-white shadow flex flex-col my-4 p-6">
               <p class="text-xl font-semibold pb-5">Instagram</p>
               <div class="grid grid-cols-3 gap-3">
-                <nuxt-img preload class="hover:opacity-75" src="https://source.unsplash.com/collection/1346951/150x150?sig=1"/>
-                <nuxt-img preload class="hover:opacity-75" src="https://source.unsplash.com/collection/1346951/150x150?sig=2"/>
-                <nuxt-img preload class="hover:opacity-75" src="https://source.unsplash.com/collection/1346951/150x150?sig=3"/>
-                <nuxt-img preload class="hover:opacity-75" src="https://source.unsplash.com/collection/1346951/150x150?sig=4"/>
-                <nuxt-img preload class="hover:opacity-75" src="https://source.unsplash.com/collection/1346951/150x150?sig=5"/>
-                <nuxt-img preload class="hover:opacity-75" src="https://source.unsplash.com/collection/1346951/150x150?sig=6"/>
-                <nuxt-img preload class="hover:opacity-75" src="https://source.unsplash.com/collection/1346951/150x150?sig=7"/>
-                <nuxt-img preload class="hover:opacity-75" src="https://source.unsplash.com/collection/1346951/150x150?sig=8"/>
-                <nuxt-img preload class="hover:opacity-75" src="https://source.unsplash.com/collection/1346951/150x150?sig=9"/>
+                <nuxt-img preload fit="cover" format="webp" class="hover:opacity-75" src="https://source.unsplash.com/collection/1346951/150x150?sig=1"/>
+                <nuxt-img preload fit="cover" format="webp" class="hover:opacity-75" src="https://source.unsplash.com/collection/1346951/150x150?sig=2"/>
+                <nuxt-img preload fit="cover" format="webp" class="hover:opacity-75" src="https://source.unsplash.com/collection/1346951/150x150?sig=3"/>
+                <nuxt-img preload fit="cover" format="webp" class="hover:opacity-75" src="https://source.unsplash.com/collection/1346951/150x150?sig=4"/>
+                <nuxt-img preload fit="cover" format="webp" class="hover:opacity-75" src="https://source.unsplash.com/collection/1346951/150x150?sig=5"/>
+                <nuxt-img preload fit="cover" format="webp" class="hover:opacity-75" src="https://source.unsplash.com/collection/1346951/150x150?sig=6"/>
+                <nuxt-img preload fit="cover" format="webp" class="hover:opacity-75" src="https://source.unsplash.com/collection/1346951/150x150?sig=7"/>
+                <nuxt-img preload fit="cover" format="webp" class="hover:opacity-75" src="https://source.unsplash.com/collection/1346951/150x150?sig=8"/>
+                <nuxt-img preload fit="cover" format="webp" class="hover:opacity-75" src="https://source.unsplash.com/collection/1346951/150x150?sig=9"/>
               </div>
               <a href="#" class="w-full bg-blue-800 text-white font-bold text-sm uppercase rounded hover:bg-blue-700 flex items-center justify-center px-2 py-3 mt-6">
                 <i class="fab fa-instagram mr-2"></i> Follow me
