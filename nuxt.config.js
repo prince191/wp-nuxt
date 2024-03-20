@@ -5,6 +5,7 @@ const fullUrl = "https://admin.gaucoffee.com/"
 export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
+	target: 'static',  
     htmlAttrs: {
       lang: 'vi_VN'
     },
