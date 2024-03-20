@@ -3,7 +3,7 @@ const baseUrl = "https://gaucoffee.com/"
 const fullUrl = "https://admin.gaucoffee.com/"
 
 export default {
-  target: 'static',  
+  target: 'static',
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
     htmlAttrs: {
@@ -65,12 +65,12 @@ export default {
   image: {
     quality: 50,
     format: ['webp'],
-	ipx: {
+    ipx: {
       cacheSize: 200 * 1024 * 1024,
     },
     // Whitelist domains cho hình ảnh
     domains: ['https://gaucoffee.com']
-  }
+  },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
