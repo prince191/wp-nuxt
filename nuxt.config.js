@@ -3,9 +3,9 @@ const baseUrl = "https://gaucoffee.com/"
 const fullUrl = "https://admin.gaucoffee.com/"
 
 export default {
+  target: 'static',  
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-	target: 'static',  
     htmlAttrs: {
       lang: 'vi_VN'
     },
@@ -60,24 +60,17 @@ export default {
 
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
-    '@nuxt/image',
-    '@kimyvgy/nuxt-page-cache',
+    '@nuxt/image'
   ],
   image: {
     quality: 50,
-    format: ['webp']
-  },
-  cache: {
-    enabled: process.env.NODE_ENV === 'production',
-    cacheStatusHeader: 'x-cache-status',
-    version: "1.0.0",
-    useHostPrefix: false,
-    store: {
-      type: 'memory',
-      max: 100,
-      ttl: 60,
+    format: ['webp'],
+	ipx: {
+      cacheSize: 200 * 1024 * 1024,
     },
-  },
+    // Whitelist domains cho hình ảnh
+    domains: ['https://gaucoffee.com']
+  }
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
