@@ -1,16 +1,16 @@
 {
   "ExpandedNodes": [
     "",
-    "\\components",
-    "\\constants",
-    "\\layouts",
     "\\pages",
     "\\pages\\_category",
     "\\plugins",
+    "\\public",
+    "\\server",
     "\\serverMiddleware",
+    "\\static",
     "\\static\\images",
     "\\store"
   ],
-  "SelectedNode": "\\pages\\index.vue",
+  "SelectedNode": "\\nuxt.config.js",
   "PreviewInSolutionExplorer": false
 }
