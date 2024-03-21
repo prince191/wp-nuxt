@@ -259,7 +259,13 @@
       try {
         const slug = context.params.id; 
         const categorySlug = context.params.category;
-        const categoryName = categorys.filter(x => x.slug == categorySlug)[0].name;
+        let categoryName = "";
+        if (categorys) {
+          let fiterCate = categorys.filter(x => x.slug == categorySlug)[0].name;
+          if (fiterCate) {
+            categoryName = fiterCate[0].name;
+          }
+        }
         const first = 3;
         const firstNotCate = 10;
         const res = await apolloClient.query({
