@@ -261,7 +261,7 @@
         const categorySlug = context.params.category;
         let categoryName = "";
         if (categorys) {
-          let fiterCate = categorys.filter(x => x.slug == categorySlug)[0].name;
+          let fiterCate = categorys.filter(x => x.slug == categorySlug);
           if (fiterCate) {
             categoryName = fiterCate[0].name;
           }

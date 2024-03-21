@@ -71,7 +71,7 @@
           <div class="flex items-center justify-end pr-16 lg:pr-0">
             <label for="themeSwitcher" class="inline-flex items-center cursor-pointer" aria-label="themeSwitcher"
                    name="themeSwitcher">
-              <input type="checkbox" name="themeSwitcher" id="themeSwitcher" class="sr-only" />
+              <button  name="themeSwitcher" id="themeSwitcher" class="sr-only" @click="check()"/>
               <span class="block text-dark dark:hidden dark:text-white">
                 <svg class="fill-current"
                      width="24"
@@ -100,11 +100,6 @@
                     <path d="M18.675 17.5125C18.3375 17.175 17.8125 17.175 17.475 17.5125C17.1375 17.85 17.1375 18.375 17.475 18.7125L18.675 19.9125C18.825 20.0625 19.05 20.175 19.275 20.175C19.5 20.175 19.725 20.1 19.875 19.9125C20.2125 19.575 20.2125 19.05 19.875 18.7125L18.675 17.5125Z" />
                     <path d="M5.32501 4.125C4.98751 3.7875 4.46251 3.7875 4.12501 4.125C3.78751 4.4625 3.78751 4.9875 4.12501 5.325L5.32501 6.525C5.47501 6.675 5.70001 6.7875 5.92501 6.7875C6.15001 6.7875 6.37501 6.7125 6.52501 6.525C6.86251 6.1875 6.86251 5.6625 6.52501 5.325L5.32501 4.125Z" />
                   </g>
-                  <defs>
-                    <clipPath id="clip0_2172_3070">
-                      <rect width="24" height="24" fill="white" />
-                    </clipPath>
-                  </defs>
                 </svg>
               </span>
             </label>
@@ -125,9 +120,32 @@
     },
     created() {
     },
+    data() {
+      return {
+        userTheme: "dark",
+        systemTheme: ""
+      }
+    },
     methods: {
+      check() {
+        if (document.documentElement.classList.contains('dark')) {
+          document.documentElement.classList.remove('dark');
+          localStorage.setItem('theme', 'light');
+          return;
+        }
+
+        document.documentElement.classList.add('dark');
+        localStorage.setItem('theme', 'dark');
+      }
     },
     mounted() {
+      this.userTheme = localStorage.getItem('theme');
+      this.systemTheme = window.matchMedia('(prefers-color0scheme: dark)').matches;
+
+      if (this.userTheme === 'dark' || (!this.userTheme && this.systemTheme)) {
+        document.documentElement.classList.add('dark');
+        return;
+      }
     },
     computed: {
     }
