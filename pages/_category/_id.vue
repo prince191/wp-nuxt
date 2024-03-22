@@ -192,7 +192,7 @@
 <script>
   import Header from "../../components/header.vue"
   import Footer from "../../components/footer.vue"
-  import { ApolloClient, GET_DETAIL_POST, categorysQuery, categorysQuery_no_footer } from '../../constants/query.js';
+  import { ApolloClient, GET_DETAIL_POST } from '../../constants/query.js';
 
   const graphUrl = process.env.graphUrl;
   const apolloClient = new ApolloClient({
@@ -239,23 +239,9 @@
       };
     },
     async asyncData(context) {
-      var response;
-      var footerHtml = "";
-      try {
-        response = await apolloClient.query({
-          query: categorysQuery,
-          fetchPolicy: 'no-cache',
-        });
-        footerHtml = response.data?.getCustomHtml;
-      } catch (e) {
-        response = await apolloClient.query({
-          query: categorysQuery_no_footer,
-          fetchPolicy: 'no-cache',
-        });
-      }
-      var categorys = response.data?.categories?.nodes;
-      //let categorys = context.store.state.categorys;
-      //let footerHtml = context.store.state.footerHtml;
+      let categorys = context.store.state.categorys;
+      let footerHtml = context.store.state.footerHtml;
+
       try {
         const slug = context.params.id; 
         const categorySlug = context.params.category;

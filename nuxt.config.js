@@ -1,6 +1,6 @@
-const siteUrl = "gaucoffee.com"
-const baseUrl = "https://gaucoffee.com/"
-const fullUrl = "https://admin.gaucoffee.com/"
+const siteUrl = "vuonghongvinh.site"
+const baseUrl = "https://vuonghongvinh.site/"
+const fullUrl = "https://nuxt.vuonghongvinh.site/"
 
 export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
