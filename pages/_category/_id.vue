@@ -248,8 +248,8 @@
         let categoryName = "";
         if (categorys) {
           let fiterCate = categorys.filter(x => x.slug == categorySlug);
-          if (fiterCate) {
-            categoryName = fiterCate[0].name;
+          if (fiterCate.length > 0) {
+            categoryName = fiterCate[0].name ?? "";
           }
         }
         const first = 3;
