@@ -254,7 +254,7 @@
         }
         const first = 3;
         const firstNotCate = 10;
-        const res = await apolloClient.query({
+        let res = await apolloClient.query({
           query: GET_DETAIL_POST,
           variables: {
             slug,
@@ -268,10 +268,10 @@
         var post = res.data.singlePost;
         var seo = res.data.singlePost?.seo;
         var fullHead = res.data.singlePost?.seo?.fullHead;
-        const scriptRegex = /<script.*?>([\s\S]*?)<\/script>/;
-        const match = fullHead.match(scriptRegex);
+        let scriptRegex = /<script.*?>([\s\S]*?)<\/script>/;
+        let match = fullHead.match(scriptRegex);
 
-        if (match) {
+        if (match.length > 1) {
           fullHead = match[1];
         } 
         var relatedPost = res.data.postsWithCategory?.nodes;

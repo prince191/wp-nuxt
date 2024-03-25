@@ -160,10 +160,10 @@
         var name = response.data.categories?.nodes[0].name;
         var seo = response.data.categories?.nodes[0].seo;
         var fullHead = response.data.categories?.nodes[0].seo?.fullHead;
-        const scriptRegex = /<script.*?>([\s\S]*?)<\/script>/;
-        const match = fullHead.match(scriptRegex);
+        let scriptRegex = /<script.*?>([\s\S]*?)<\/script>/;
+        let match = fullHead.match(scriptRegex);
 
-        if (match) {
+        if (match.length > 1) {
           fullHead = match[1];
         } 
         var isDisabled = false
